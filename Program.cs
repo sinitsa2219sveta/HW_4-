@@ -1,61 +1,86 @@
-﻿// Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B. Задача №1 семинар 4
+﻿// Задача 1: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 /*
-Console.WriteLine("Введите первое число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число: ");
-int number1 = Convert.ToInt32(Console.ReadLine());
-int result = 1;
-int i;
-for (i = 1; i <= number1; i ++ )
+int[] array = new int[100];
+
+
+FillArray(array);
+
+Solve(array);
+
+void FillArray(int[] goose)
 {
-    result = result * number;
+    Random random = new Random();
+
+    for (int i = 0; i < goose.Length; i++)
+    {
+        goose[i] = random.Next(100, 1000);
+    }
 }
-Console.WriteLine(result);
+
+void Solve(int[] goose)
+{
+    int counter = 0;
+
+    for (int i = 0; i < goose.Length; i++)
+    {
+        if (goose[i] % 2 == 0)
+        {
+            counter++;
+        }
+    }
+
+    System.Console.WriteLine(counter);
+}
 */
-//Задача 2: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+//Задача 2: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 /*
-Console.WriteLine("Введите первое число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите второе число: ");
-int number1 = Convert.ToInt32(Console.ReadLine());
-int result = 1;
-int i;
-for (i = 1; i <= number1; i ++ )
+int SummNechetElement()
 {
-    result = result * number;
+    int[] array = new int[10];
+    int summa = 0;
+
+    for (int i = 0; i < 10; i++)
+    {
+        array[i] = new Random().Next(1, 11);
+        System.Console.Write(array[i] + " ");
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        if(i % 2 != 0) summa = summa + array[i];
+    }
+
+    System.Console.WriteLine();
+    return summa;
 }
-Console.WriteLine(result);
+
+
+System.Console.WriteLine($"сумма с нечётными индексами = {SummNechetElement()}");
 */
-//Задача 3: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-/*
- int [] MayArray = {3, 4, 6, 8, 78, 22, 33, 12};
-  for(int i = 0; i <  MayArray.Length; i++)
-  {
-      Console.WriteLine(MayArray[i]);
-  }
-    
-Console.ReadLine();
-*/
-//Второй вариант решения задачи
-/*
+//Задача 3: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 
-Console.Write("Введите количество элементов массива:\t");
+double[] array = new double[100];
+FillArray(array);
+Delta(array);
 
-int elementsCounts = int.Parse(Console.ReadLine());
-
-int[] myArray = new int[elementsCounts];
-
-for (int i = 0; i < myArray.Length; i++)
+void FillArray(double[] goose)
 {
-    Console.Write($"\nВведите элемент массива под индексом {i}:\t");
+    Random random = new Random();
 
-    myArray[i] = int.Parse(Console.ReadLine());
-
+    for (int i = 0; i < goose.Length; i++)
+    {
+        goose[i] = 1000 * random.NextDouble();
+    }
 }
-Console.Write("\nВывод массива:\t");
-for (int i = 0; i < myArray.Length; i++)
+
+void Delta(double[] goose)
 {
-    Console.WriteLine(myArray[i]);
+    double min = double.MaxValue, max = double.MinValue;
+    for (int i = 0; i < goose.Length; i++)
+    {
+        if (goose[i] < min) min = goose[i];
+        if (goose[i] > max) max = goose[i];
+    }
+
+    System.Console.WriteLine(max - min);
 }
-Console.ReadLine();
-*/
